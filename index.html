@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday! 🎉</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        /* Page 1 - Welcome */
+        #page1 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .welcome-content {
+            text-align: center;
+            color: white;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .welcome-content h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .welcome-content p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+
+        .btn-custom {
+            background: white;
+            color: #667eea;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-custom:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            color: #764ba2;
+        }
+
+        /* Page 2 - Message */
+        #page2 {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .message-card {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            max-width: 800px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .message-card h2 {
+            color: #f5576c;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .message-card p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        /* Page 3 - Photos */
+        #page3 {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .photo-gallery {
+            max-width: 1000px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .photo-gallery h2 {
+            color: white;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .photo-item {
+            background: white;
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .photo-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .photo-caption {
+            text-align: center;
+            color: #333;
+            font-weight: bold;
+        }
+
+        /* Page 4 - Final Wishes */
+        #page4 {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+
+        .final-wishes {
+            text-align: center;
+            color: white;
+            max-width: 800px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .final-wishes h2 {
+            font-size: 3.5rem;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .final-wishes p {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .cake-icon {
+            font-size: 5rem;
+            margin: 30px 0;
+            animation: bounce 2s infinite;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Balloons */
+        .balloon {
+            position: absolute;
+            width: 50px;
+            height: 70px;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .balloon:nth-child(1) { background: #ff6b6b; left: 10%; animation-delay: 0s; }
+        .balloon:nth-child(2) { background: #4ecdc4; left: 30%; animation-delay: 1s; }
+        .balloon:nth-child(3) { background: #ffe66d; left: 50%; animation-delay: 2s; }
+        .balloon:nth-child(4) { background: #a8e6cf; left: 70%; animation-delay: 3s; }
+        .balloon:nth-child(5) { background: #ff8b94; left: 90%; animation-delay: 4s; }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(-5deg);
+            }
+            50% {
+                transform: translateY(-30px) rotate(5deg);
+            }
+        }
+
+        .nav-dots {
+            position: fixed;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+        }
+
+        .nav-dot {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            margin: 15px 0;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .nav-dot.active {
+            background: white;
+            transform: scale(1.3);
+        }
+
+        @media (max-width: 768px) {
+            .welcome-content h1 { font-size: 2.5rem; }
+            .message-card { padding: 30px; }
+            .photo-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Dots -->
+    <div class="nav-dots">
+        <div class="nav-dot active" onclick="scrollToPage(1)"></div>
+        <div class="nav-dot" onclick="scrollToPage(2)"></div>
+        <div class="nav-dot" onclick="scrollToPage(3)"></div>
+        <div class="nav-dot" onclick="scrollToPage(4)"></div>
+    </div>
+
+    <!-- Page 1: Welcome -->
+    <div id="page1" class="page">
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+        
+        <div class="welcome-content">
+            <h1>🎉 Happy Birthday! 🎉</h1>
+            <p>आज तुझा खास दिवस आहे!</p>
+            <p>तुझ्यासाठी काहीतरी स्पेशल बनवलं आहे...</p>
+            <a href="#page2" class="btn-custom" onclick="scrollToPage(2)">
+                पुढे चल <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Page 2: Heartfelt Message -->
+    <div id="page2" class="page">
+        <div class="message-card">
+            <h2><i class="fas fa-heart"></i> माझ्या मनातलं...</h2>
+            <p>
+                <strong>प्रिय मित्रा/मैत्रिणी,</strong>
+            </p>
+            <p>
+                आज तुझा वाढदिवस आहे आणि मला खूप आनंद झाला की मी तुझ्या आयुष्यातला एक भाग आहे. 
+                तू फक्त एक मित्र नाहीस, तर माझ्या आयुष्यातील एक खास व्यक्ती आहेस.
+            </p>
+            <p>
+                तुझी हसणं, तुझं बोलणं, तुझी काळजी - हे सगळं माझ्यासाठी खूप महत्वाचं आहे. 
+                तू नेहमी माझ्या सोबत उभा राहिलास, माझं ऐकलंस, आणि मला योग्य मार्ग दाखवलास.
+            </p>
+            <p>
+                या नवीन वर्षात तुझ्या सर्व स्वप्नं पूर्ण होवोत, तुला यश मिळो, आणि तू नेहमी खुश रहा. 
+                तुझी मैत्री माझ्यासाठी एक आशीर्वाद आहे!
+            </p>
+            <p style="text-align: center; margin-top: 30px;">
+                <strong>❤️ तुझा सगळ्यात चांगला मित्र ❤️</strong>
+            </p>
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="#page3" class="btn-custom" onclick="scrollToPage(3)">
+                    आठवणी पहा <i class="fas fa-images"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 3: Photo Gallery -->
+    <div id="page3" class="page">
+        <div class="photo-gallery">
+            <h2>📸 आपल्या आठवणी 📸</h2>
+            <div class="photo-grid">
+                <div class="photo-item">
+                    <div class="photo-placeholder">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <p class="photo-caption">आपली पहिली भेट</p>
+                </div>
+                <div class="photo-item">
+                    <div class="photo-placeholder">
+                        <i class="fas fa-smile"></i>
+                    </div>
+                    <p class="photo-caption">मस्त मस्त गप्पा</p>
+                </div>
+                <div class="photo-item">
+                    <div class="photo-placeholder">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <p class="photo-caption">खास क्षण</p>
+                </div>
+                <div class="photo-item">
+                    <div class="photo-placeholder">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="photo-caption">अविस्मरणीय आठवणी</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="#page4" class="btn-custom" onclick="scrollToPage(4)">
+                    शेवटचा सरप्राईज <i class="fas fa-gift"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 4: Final Wishes -->
+    <div id="page4" class="page">
+        <div class="final-wishes">
+            <h2>🎂 वाढदिवसाच्या हार्दिक शुभेच्छा! 🎂</h2>
+            <div class="cake-icon">🎂</div>
+            <p>
+                तुझं आयुष्य नेहमी आनंदाने, प्रेमाने आणि यशाने भरलेलं असो!
+            </p>
+            <p>
+                तू जे काही करतोस त्यात तुला यश मिळो!
+            </p>
+            <p>
+                तुझी सर्व इच्छा पूर्ण होवोत!
+            </p>
+            <p style="font-size: 2rem; margin-top: 30px;">
+                <strong>🎉 Once Again, Happy Birthday! 🎉</strong>
+            </p>
+            <p style="margin-top: 20px;">
+                <i class="fas fa-heart" style="color: #ff6b6b;"></i>
+                <i class="fas fa-heart" style="color: #4ecdc4;"></i>
+                <i class="fas fa-heart" style="color: #ffe66d;"></i>
+            </p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function scrollToPage(pageNum) {
+            const page = document.getElementById('page' + pageNum);
+            page.scrollIntoView({ behavior: 'smooth' });
+            
+            // Update active dot
+            document.querySelectorAll('.nav-dot').forEach((dot, index) => {
+                dot.classList.toggle('active', index === pageNum - 1);
+            });
+        }
+
+        // Update active dot on scroll
+        window.addEventListener('scroll', () => {
+            const pages = document.querySelectorAll('.page');
+            const scrollPos = window.scrollY + window.innerHeight / 2;
+            
+            pages.forEach((page, index) => {
+                const pageTop = page.offsetTop;
+                const pageBottom = pageTop + page.offsetHeight;
+                
+                if (scrollPos >= pageTop && scrollPos < pageBottom) {
+                    document.querySelectorAll('.nav-dot').forEach((dot, dotIndex) => {
+                        dot.classList.toggle('active', dotIndex === index);
+                    });
+                }
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
